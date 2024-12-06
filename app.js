@@ -15,11 +15,14 @@ const jsonData = {
 
 const video = document.getElementById('video');
 const iniciarCamara = document.getElementById('iniciarCamara');
+const cambiarCamara = document.getElementById('cambiarCamara');
 const platosSelect = document.getElementById('platos');
 const ingredientesList = document.getElementById('ingredientes');
 const detectadosList = document.getElementById('ingredientesDetectados');
 const faltantesList = document.getElementById('ingredientesFaltantes');
 let modelo;
+let stream;
+let facingMode = 'environment'; // 'environment' para cámara trasera, 'user' para cámara frontal
 
 // Cargar los platos en el selector
 Object.keys(jsonData).forEach(categoria => {
@@ -45,8 +48,13 @@ platosSelect.addEventListener('change', () => {
 
 // Activar la cámara y cargar el modelo
 iniciarCamara.addEventListener('click', async () => {
+  // Detener la cámara si ya está activa
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+  }
+
   // Iniciar la cámara
-  const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+  stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: facingMode } });
   video.srcObject = stream;
 
   // Cargar el modelo de COCO-SSD
@@ -54,6 +62,21 @@ iniciarCamara.addEventListener('click', async () => {
 
   // Iniciar la detección en tiempo real
   detectarObjetos();
+});
+
+// Cambiar la cámara
+cambiarCamara.addEventListener('click', async () => {
+  // Cambiar el modo de la cámara
+  facingMode = facingMode === 'user' ? 'environment' : 'user';
+
+  // Detener la cámara actual
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+  }
+
+  // Iniciar la cámara con el nuevo modo
+  stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: facingMode } });
+  video.srcObject = stream;
 });
 
 // Detectar objetos en tiempo real
