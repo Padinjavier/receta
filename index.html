@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detector de Ingredientes</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <style>
+    video, canvas {
+      max-width: 100%;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Detector de Ingredientes</h1>
+  <label for="platos">Selecciona un plato:</label>
+  <select id="platos"></select>
+  <h2>Ingredientes requeridos:</h2>
+  <ul id="ingredientes"></ul>
+  <button id="iniciarCamara">Iniciar Cámara</button>
+  <video id="video" autoplay muted playsinline></video>
+  <h2>Ingredientes detectados:</h2>
+  <ul id="ingredientesDetectados"></ul>
+  <h2>Ingredientes faltantes:</h2>
+  <ul id="ingredientesFaltantes"></ul>
+
+  <script src="app.js"></script>
+</body>
+</html>

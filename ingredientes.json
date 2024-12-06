@@ -1,0 +1,33 @@
+{
+    "desayunos": [
+      {
+        "nombre": "Chicharrón con camote",
+        "ingredientes": ["pan", "camote", "chicharrón", "salsa criolla"]
+      },
+      {
+        "nombre": "Tamales verdes",
+        "ingredientes": ["masa de maíz", "hoja de plátano", "ají verde", "pollo"]
+      }
+    ],
+    "almuerzos": [
+      {
+        "nombre": "Sopa seca con carapulcra",
+        "ingredientes": ["fideos", "maní", "ají panca", "carne de cerdo", "papa seca"]
+      },
+      {
+        "nombre": "Arroz con pato",
+        "ingredientes": ["arroz", "cilantro", "pato", "chicha de jora", "cebolla"]
+      }
+    ],
+    "cenas": [
+      {
+        "nombre": "Pollo a la brasa",
+        "ingredientes": ["pollo", "papas", "ají amarillo", "lechuga"]
+      },
+      {
+        "nombre": "Causa rellena",
+        "ingredientes": ["papa amarilla", "atún", "mayonesa", "limón", "ají amarillo"]
+      }
+    ]
+  }
+  
